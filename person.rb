@@ -23,5 +23,25 @@ class Person
     @mobile_number.push(input)
   end
   
+   def remove_email(pos)
+    emails.delete_at(pos.to_i)
+  end
+  
+  def to_s
+    "#{first_name} #{surname}" + " was born on" + " #{dob}" + " Their email addresses are:" + "#{emails.to_s}"+ " Their phone numbers are:" + mobile_number.to_s  
+  end
+  
+  def print_details
+  
+    "#{first_name} #{surname}" + "-----------  Your date of birth is " + "#{dob}"  
+     # ""
+     # " Email Addresses:"
+     # '- ' << emails.to_s
+     # ""
+     # " Phone Numbers:"
+     # '- ' << mobile_number.to_s
+    
+  end
+  
 end
 
