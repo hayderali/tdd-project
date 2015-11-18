@@ -8,6 +8,7 @@ class Person
     @first_name =fname.capitalize
     @surname = sname.capitalize
     @emails = []
+    @mobile_number = []
   end
 
   def fullname
@@ -17,4 +18,10 @@ class Person
   def add_email(input)
     @emails.push(input)
   end 
+
+  def add_phone(input)
+    @mobile_number.push(input)
+  end
+  
 end
+
