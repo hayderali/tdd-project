@@ -65,10 +65,15 @@ describe "Person Class - Printing Details" do
   it "displaying information presentably" do
     person = Person.new("joe","bloggs","1 Jan 1990")
     person.add_email("joe@foo.com")
-    person.add_phone("07712345678")
-    expect(person.print_details).to eq "Joe Bloggs-----------  Your date of birth is 1990-01-01"
+		person.add_email("joe.bloggs@work.com")
+    person.add_phone("02012345678")
+    expect(person.print_details).to eq "Joe Bloggs-----------  Date of birth is 1990-01-01 Email Addresses:-[\"joe@foo.com\", \"joe.bloggs@work.com\"] Phone Numbers: -[\"02012345678\"]"
   end
-  
-  
 end
-
+  
+  describe "FamilyMember Class - Inherits Person Class" do 
+		it "inherits and adds additional instance variable" do
+			family = FamilyMember.new("ronald","bloggs","1 Jan 1991")
+			expect(family.relationship).to eq true
+		end
+end

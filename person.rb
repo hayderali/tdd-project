@@ -33,15 +33,19 @@ class Person
   
   def print_details
   
-    "#{first_name} #{surname}" + "-----------  Your date of birth is " + "#{dob}"  
-     # ""
-     # " Email Addresses:"
-     # '- ' << emails.to_s
-     # ""
-     # " Phone Numbers:"
-     # '- ' << mobile_number.to_s
+    "#{first_name} #{surname}" + "-----------  Date of birth is " + "#{dob}" + " Email Addresses:" '-' << "#{emails.to_s} " +"Phone Numbers:" ' -' << "#{mobile_number.to_s}"  
     
   end
   
+end
+
+class FamilyMember < Person
+
+	attr_accessor	:relationship
+	  def initialize(fname,sname,dob)
+			super
+			@relationship = true
+		end
+	
 end
 
