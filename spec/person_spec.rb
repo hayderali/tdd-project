@@ -78,9 +78,13 @@ describe "FamilyMember Class - Inherits Person Class" do
 		end
 end
 
-describe "AddressBook Class - Inherits Person Class" do 
-		it "inherits and adds additional instance variable" do
-			family = FamilyMember.new("ronald","bloggs","1 Jan 1991")
-			expect(family.relationship).to eq true
+describe "AddressBook Class - Listing the names" do 
+		it "parsing person objects into the address_book array " do
+			person1 = Person.new("joe", "bloggs", "1 Jan 1990")
+      person2 = Person.new("andy", "nother", "2 Jan 1995") 
+      book = AddressBook.new
+      book.add person1
+      book.add person2
+      #expect(book.list.to_s).to eq "bla"
 		end
 end

@@ -1,4 +1,5 @@
 require 'date'
+require 'yaml'
 
 class Person
   attr_accessor :dob, :first_name, :surname, :fullname  
@@ -65,24 +66,30 @@ class AddressBook
     address_book.push(input.fullname)
   end 
   
-  def view_pos(pos)
-    address_book[(pos.to_i)]
-  end
-  
   def list
-    # puts "Address Book"
-    # puts ""
-    # 11.times do 
-      # print "-"
-    # end
-    # ""
+  ######fix this later
+    puts "Address Book"
+    puts "-----------"   
     
-    # puts "Entry 1:" + address_book[0]
+    address_book.each.with_index{ |element , index| puts "Entry #{index}: " + "#{element}" + "\n" }
     
+    #puts "Entry 1:" + address_book[0]
     # puts address_book.to_s
-    
-    # address_book.each { |0| puts address_book[(x.to_i)-1]}
+    # entries.each.with_index(1) { |name, index| puts "Entry #{index}: " + name.fullname + "\n"}
+    #address_book.to_enum.with_index(1).each { |elem| puts "#{elem}" }
+    #{ |x| puts "#{address_book[x.to_i-1]}" }
   end
+ 
+  def load_yaml(filename)
+    data = YAML.load(File.open(filename))
+    
+    
+  
+    #load_data = YAML.load_file('address_book.yml')
+    #puts load_data
+    
+  end 
+  
   
   
 end
