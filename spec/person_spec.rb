@@ -71,7 +71,14 @@ describe "Person Class - Printing Details" do
   end
 end
   
-  describe "FamilyMember Class - Inherits Person Class" do 
+describe "FamilyMember Class - Inherits Person Class" do 
+		it "inherits and adds additional instance variable" do
+			family = FamilyMember.new("ronald","bloggs","1 Jan 1991")
+			expect(family.relationship).to eq true
+		end
+end
+
+describe "AddressBook Class - Inherits Person Class" do 
 		it "inherits and adds additional instance variable" do
 			family = FamilyMember.new("ronald","bloggs","1 Jan 1991")
 			expect(family.relationship).to eq true

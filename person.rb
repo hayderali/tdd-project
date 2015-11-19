@@ -12,7 +12,7 @@ class Person
   end
 
   def fullname
-    "#{first_name} #{surname}"
+    "#{first_name}" << " #{surname}"
   end
   
   def add_email(input)
@@ -23,10 +23,15 @@ class Person
     @mobile_number.push(input)
   end
   
+  def remove_phone(pos)
+    mobile_number.delete_at(pos.to_i)
+  end
+  
+  
    def remove_email(pos)
     emails.delete_at(pos.to_i)
   end
-  
+   
   def to_s
     "#{first_name} #{surname}" + " was born on" + " #{dob}" + " Their email addresses are:" + "#{emails.to_s}"+ " Their phone numbers are:" + mobile_number.to_s  
   end
@@ -47,5 +52,38 @@ class FamilyMember < Person
 			@relationship = true
 		end
 	
+end
+
+class AddressBook 
+
+  attr_reader :address_book
+  def initialize
+    @address_book = []
+	end
+  
+  def add(input)
+    address_book.push(input.fullname)
+  end 
+  
+  def view_pos(pos)
+    address_book[(pos.to_i)]
+  end
+  
+  def list
+    # puts "Address Book"
+    # puts ""
+    # 11.times do 
+      # print "-"
+    # end
+    # ""
+    
+    # puts "Entry 1:" + address_book[0]
+    
+    # puts address_book.to_s
+    
+    # address_book.each { |0| puts address_book[(x.to_i)-1]}
+  end
+  
+  
 end
 
