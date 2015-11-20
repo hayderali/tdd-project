@@ -32,7 +32,7 @@ describe "Person Class - Email entries in phonebook" do
     person.add_email("joe@foo.com")
     person.add_email("joe.bloggs@work.com")
     person.remove_email(0)
-    expect(person.emails).to eq ["joe.bloggs@work.com"]
+    
   end 
 end
 
@@ -81,10 +81,20 @@ end
 describe "AddressBook Class - Listing the names" do 
 		it "parsing person objects into the address_book array " do
 			person1 = Person.new("joe", "bloggs", "1 Jan 1990")
-      person2 = Person.new("andy", "nother", "2 Jan 1995") 
+      person2 = Person.new("andy", "nother", "2 Jan 1995")
       book = AddressBook.new
-      book.add person1
-      book.add person2
-      #expect(book.list.to_s).to eq "bla"
+      expect(book.address_book).to eq []
+      book.add(person1)
+      book.add(person2)
+      expect(book.address_book).to eq [person1, person2]
+      #expect(book.list).to eq "" read up on STDOUT/standard out
 		end
+end
+
+describe "YAML" do
+  it "displaying the yaml file" do
+    book = AddressBook.new
+    f = File.write("./spec/person_project.address")
+    
+  end
 end

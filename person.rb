@@ -62,35 +62,36 @@ class AddressBook
     @address_book = []
 	end
   
-  def add(input)
-    address_book.push(input.fullname)
+  def add(person)
+    address_book.push << person
   end 
   
   def list
-  ######fix this later
-    puts "Address Book"
-    puts "-----------"   
-    
-    address_book.each.with_index{ |element , index| puts "Entry #{index}: " + "#{element}" + "\n" }
-    
-    #puts "Entry 1:" + address_book[0]
-    # puts address_book.to_s
-    # entries.each.with_index(1) { |name, index| puts "Entry #{index}: " + name.fullname + "\n"}
-    #address_book.to_enum.with_index(1).each { |elem| puts "#{elem}" }
-    #{ |x| puts "#{address_book[x.to_i-1]}" }
+      "Address Book\n-----------\n"   
+		 @address_book.each.with_index(1){ |element , index| puts "Entry #{index}: " + element.fullname + "\n" }
   end
+    
+	 
+	 
  
-  def load_yaml(filename)
-    data = YAML.load(File.open(filename))
-    
-    
+  #def load_yaml(filename)
+    #data = YAML.load(File.open(filename))
+
+  def yml
+    file = YAML.load_file('./address_book.yml')
+    file["people"].each do |yml_person|
+      person = Person.new(yml_person["fname"], 
+                          yml_person["surname"], 
+                          yml_person["dob"])
+      @address_book.push(person)
+      yml_person["emails"].each { |e| person.add_email(e) }
+      yml_person["phone"].each { |p| person.add_phone(p) }
+    end
+  end
   
     #load_data = YAML.load_file('address_book.yml')
     #puts load_data
-    
-  end 
-  
-  
+     
   
 end
 
