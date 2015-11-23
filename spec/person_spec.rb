@@ -88,13 +88,15 @@ describe "AddressBook Class - Listing the names" do
       book.add(person2)
       expect(book.address_book).to eq [person1, person2]
       #expect(book.list).to eq "" read up on STDOUT/standard out
-		end
-end
-
-describe "YAML" do
-  it "displaying the yaml file" do
-    book = AddressBook.new
-    f = File.write("./spec/person_project.address")
-    
+      expect{ book.list }.to output("Address Book\n------------\nEntry 1: Joe Bloggs\nEntry 2: Andy Nother\n").to_stdout
+  end
+ 
+   it "displaying the yaml file" do
+     file = YAML.load_file('address_book.yml')
+     book = AddressBook.new
+     expect(file.class).to be Hash
+     book.yml
+     book.list
+     expect{ book.list }.to output("Address Book\n------------\nEntry 1: Joe Bloggs\nEntry 2: Andy Nother\n").to_stdout
   end
 end

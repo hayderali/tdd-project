@@ -67,15 +67,10 @@ class AddressBook
   end 
   
   def list
-      "Address Book\n-----------\n"   
-		 @address_book.each.with_index(1){ |element , index| puts "Entry #{index}: " + element.fullname + "\n" }
+      puts "Address Book\n------------\n"   
+		  @address_book.each.with_index(1){ |element , index| puts "Entry #{index}: " + element.fullname + "\n" }
   end
     
-	 
-	 
- 
-  #def load_yaml(filename)
-    #data = YAML.load(File.open(filename))
 
   def yml
     file = YAML.load_file('./address_book.yml')
@@ -84,13 +79,11 @@ class AddressBook
                           yml_person["surname"], 
                           yml_person["dob"])
       @address_book.push(person)
-      yml_person["emails"].each { |e| person.add_email(e) }
-      yml_person["phone"].each { |p| person.add_phone(p) }
+        yml_person["emails"].each { |e| person.add_email(e) }
+        yml_person["phones"].each { |p| person.add_phone(p) }
     end
   end
   
-    #load_data = YAML.load_file('address_book.yml')
-    #puts load_data
      
   
 end
